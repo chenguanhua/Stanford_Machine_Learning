@@ -82,7 +82,7 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-alpha = 0.01;
+alpha = 0.3;
 num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
@@ -94,6 +94,24 @@ figure;
 plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
+
+%Chen's code
+theta1 = zeros(3, 1);
+alpha1=0.3
+[theta1, J1] = gradientDescentMulti(X, y, theta1, alpha1, num_iters);
+figure;
+plot(1:50, J1(1:50), 'b');
+hold on;
+theta2 = zeros(3, 1);
+alpha2=0.1
+[theta2, J2] = gradientDescentMulti(X, y, theta2, alpha2, num_iters);
+plot(1:50, J2(1:50), 'r');
+theta3 = zeros(3, 1);
+alpha3=0.03
+[theta3, J3] = gradientDescentMulti(X, y, theta3, alpha3, num_iters);
+plot(1:50, J3(1:50), 'k');
+hold off;
+%End of Chen's code
 
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
